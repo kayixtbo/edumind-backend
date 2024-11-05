@@ -74,7 +74,6 @@ app.use("/student", createStudent)
 app.use("/student", putStudent)
 app.use("/student", fetchStudent)
 
-
 dataSource.initialize()
     .catch(function (error) {
         console.log("Error: ", error)

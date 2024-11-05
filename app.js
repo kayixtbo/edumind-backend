@@ -25,6 +25,12 @@ const getResponsibles = require("./src/http/responsible/getResponsibles.js")
 const putResponsible = require("./src/http/responsible/putResponsible.js")
 const fetchResponsible = require("./src/http/responsible/fetchResponsible.js")
 
+// rotas professional 
+const createProfessional = require("./src/http/professional/createPofessional.js")
+const getProfessionals = require("./src/http/professional/getProfessionals.js")
+const putProfessional = require("./src/http/professional/putProfessional.js")
+const fetchProfessional = require("./src/http/professional/fetchPofessional.js")
+
 app.use(
     express.urlencoded({
       extended: true
@@ -45,10 +51,16 @@ app.use("/class", putClass)
 app.use("/class", fetchClass)
 
 // definição de rotas da entidade responsible
-app.use("/class", getResponsibles)
-app.use("/class", createResponsible)
-app.use("/class", putResponsible)
-app.use("/class", fetchResponsible)
+app.use("/responsible", getResponsibles)
+app.use("/responsible", createResponsible)
+app.use("/responsible", putResponsible)
+app.use("/responsible", fetchResponsible)
+
+// definição de rotas da entidade responsible
+app.use("/professional", getProfessionals)
+app.use("/professional", createProfessional)
+app.use("/professional", putProfessional)
+app.use("/professional", fetchProfessional)
 
 
 dataSource.initialize()

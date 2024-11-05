@@ -1,10 +1,9 @@
 const express = require("express")
 const router = express.Router()
 
-const {getResponsibles} = require("../../use-cases/responsible/getResponsibles")
-
+const {getProfessionals} = require("../../use-cases/professional/getProfessionals")
 router.get("/",async (req, res)=>{
-    let response = await getResponsibles()
+    let response = await getProfessionals()
     
     res.send(response)
 })

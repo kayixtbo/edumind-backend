@@ -1,10 +1,9 @@
 let {dataSource} = require("../../dataSource")
 
-async function getResponsibles(id_school) {
+async function getResponsibles() {
     let responsibleRepository = await dataSource // realizando a query
         .getRepository('Responsible')
         .createQueryBuilder('responsible')
-        .where({id_school: id_school})
         .getMany()
     
     return responsibleRepository

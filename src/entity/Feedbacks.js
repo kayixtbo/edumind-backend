@@ -3,7 +3,7 @@ const { JoinColumn } = require("typeorm")
 let EntitySchema = require("typeorm").EntitySchema
 
 module.exports = new EntitySchema({
-    name: "Professional", 
+    name: "Feedbacks", 
     columns: {
         id: {
             primary: true,

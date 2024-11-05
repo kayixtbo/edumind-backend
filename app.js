@@ -12,5 +12,5 @@ app.use('/api', indexRoutes);
 
 // Iniciando o servidor
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`O servidor está em execução http://localhost:${port}`);
 });

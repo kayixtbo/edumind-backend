@@ -2,7 +2,8 @@ const { Sequelize} = require('sequelize');
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
-  storage: '../edumind_db.sqlite'
+  storage: './database.sqlite',
+  logging: false,
 });
 
 // Sincronizando os modelos com o banco de dados

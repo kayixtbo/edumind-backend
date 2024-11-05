@@ -1,9 +1,16 @@
-const express = require("express");
+const express = require('express');
+const bodyParser = require('body-parser');
+const indexRoutes = require('./routes/index');
 
+const port = 3000;
 const app = express();
 
-const startServer = async() => {
+app.use(bodyParser.json());
 
-}
+// Usando as rotas
+app.use('/api', indexRoutes);
 
-startServer();
+// Iniciando o servidor
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});

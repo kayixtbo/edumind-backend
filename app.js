@@ -31,6 +31,12 @@ const getProfessionals = require("./src/http/professional/getProfessionals.js")
 const putProfessional = require("./src/http/professional/putProfessional.js")
 const fetchProfessional = require("./src/http/professional/fetchPofessional.js")
 
+// rotas student 
+const createStudent = require("./src/http/student/createStudent.js")
+const getStudents = require("./src/http/student/getStudents.js")
+const putStudent = require("./src/http/student/putStudent.js")
+const fetchStudent = require("./src/http/student/fetchStudent.js")
+
 app.use(
     express.urlencoded({
       extended: true
@@ -61,6 +67,12 @@ app.use("/professional", getProfessionals)
 app.use("/professional", createProfessional)
 app.use("/professional", putProfessional)
 app.use("/professional", fetchProfessional)
+
+// definição de rotas da entidade student
+app.use("/student", getStudents)
+app.use("/student", createStudent)
+app.use("/student", putStudent)
+app.use("/student", fetchStudent)
 
 
 dataSource.initialize()

@@ -1,1 +1,0 @@
-# edumind-backend

@@ -30,9 +30,7 @@ module.exports = new EntitySchema({
             JoinColumn: {
                 name: "id_professional"
             }
-        }
-    },
-    relations: {
+        },
         students: {
             target: "Students",
             type: "one-to-many",

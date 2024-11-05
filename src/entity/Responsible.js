@@ -1,6 +1,4 @@
-const { JoinColumn } = require("typeorm")
-
-let EntitySchema = require("typeorm").EntitySchema
+let EntitySchema = require("typeorm").EntitySchema;
 
 module.exports = new EntitySchema({
     name: "Responsible", 
@@ -17,19 +15,14 @@ module.exports = new EntitySchema({
         birth: {
             type: "date",
             nullable: false
-        },
-        id_school: {
-            type: "varchar",
-            nullable: false
         }
     },
     relations: {
         school: {
             target: "School",
             type: "many-to-many",
-            JoinColumn: {
-                name: "id_school"
-            }
+            inverseSide: "responsible",
+            joinTable: true  // Isso cria a tabela de junção automaticamente
         }
     }
-})
+});

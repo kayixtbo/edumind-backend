@@ -1,6 +1,4 @@
-const { JoinColumn } = require("typeorm")
-
-let EntitySchema = require("typeorm").EntitySchema
+let EntitySchema = require("typeorm").EntitySchema;
 
 module.exports = new EntitySchema({
     name: "Students", 
@@ -35,27 +33,23 @@ module.exports = new EntitySchema({
         school: {
             target: "School",
             type: "many-to-one",
-            JoinColumn: {
+            joinColumn: {
                 name: "id_school"
             }
-        }
-    },
-    relations: {
+        },
         responsible: {
             target: "Responsible",
-            type: "one-to-many",
-            JoinColumn: {
+            type: "many-to-one",
+            joinColumn: {
                 name: "id_responsible"
             }
-        }
-    },
-    relations: {
+        },
         class: {
             target: "Class",
-            type: "one-to-many",
-            JoinColumn: {
+            type: "many-to-one",
+            joinColumn: {
                 name: "id_class"
             }
         }
     }
-})
+});

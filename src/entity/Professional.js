@@ -34,7 +34,7 @@ module.exports = new EntitySchema({
             target: "School",
             type: "many-to-many",
             inverseSide: "professional",
-            joinTable: true  // Indica que o TypeORM criará a tabela de junção
+            joinTable: true 
         }
     }
 });

@@ -1,26 +1,31 @@
 const express = require('express');
 const app = express()
-const path = require('path');
 const {dataSource} = require('./src/dataSource.js');
-const {createSchool} = require('./src/classes/school/createSchool.js');
 require('dotenv').config()
+
+// definição de porta e host local
+const port = process.env.PORT ? parseInt(process.env.PORT) : 8000
+const host = process.env.HOST ? process.env.HOST : "localhost"
+
+// rotas school
+const createSchool = require("./src/http/school/createSchool.js")
+const getSchol = require("./src/http/school/getSchool.js");
+const putSchool = require("./src/http/school/putSchool.js");
+const fetchSchool = require("./src/http/school/fetchSchool.js");
+
 
 app.use(
     express.urlencoded({
       extended: true
     })
-  )
-
+)
 app.use(express.json());
 
-const port = process.env.PORT ? parseInt(process.env.PORT) : 8000
-const host = process.env.HOST ? process.env.HOST : "localhost"
-
-app.post("/create/school",async (req, res)=>{
-    let {name, cnpj, adress} = await req.body    
-    let response = await createSchool(name, cnpj, adress)
-    res.send(response)
-})
+// definição de rotas da entidade school
+app.use("/school", getSchol)
+app.use("/school", createSchool)
+app.use("/school", putSchool)
+app.use("/school", fetchSchool)
 
 dataSource.initialize()
     .catch(function (error) {

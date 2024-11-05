@@ -22,7 +22,7 @@ module.exports = new EntitySchema({
             target: "School",
             type: "many-to-many",
             inverseSide: "responsible",
-            joinTable: true  // Isso cria a tabela de junção automaticamente
+            joinTable: true  
         }
     }
 });

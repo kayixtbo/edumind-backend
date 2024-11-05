@@ -1,32 +1,16 @@
 const express = require('express');
-const app = express()
-const path = require('path');
-const {dataSource} = require('./src/dataSource.js');
-const {createSchool} = require('./src/classes/school/createSchool.js');
-require('dotenv').config()
+const bodyParser = require('body-parser');
+const indexRoutes = require('./routes/index');
 
-app.use(
-    express.urlencoded({
-      extended: true
-    })
-  )
+const port = 3000;
+const app = express();
 
-app.use(express.json());
+app.use(bodyParser.json());
 
-const port = process.env.PORT ? parseInt(process.env.PORT) : 8000
-const host = process.env.HOST ? process.env.HOST : "localhost"
+// Usando as rotas
+app.use('/api', indexRoutes);
 
-app.post("/create/school",async (req, res)=>{
-    let {name, cnpj, adress} = await req.body    
-    let response = await createSchool(name, cnpj, adress)
-    res.send(response)
-})
-
-dataSource.initialize()
-    .catch(function (error) {
-        console.log("Error: ", error)
-    })
-
-app.listen(port,()=>{
-    console.log(`App running in http://${host}:${port}`);
-})
+// Iniciando o servidor
+app.listen(port, () => {
+  console.log(`O servidor está em execução http://localhost:${port}`);
+});

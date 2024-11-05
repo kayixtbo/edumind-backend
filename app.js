@@ -19,6 +19,12 @@ const getClasses = require("./src/http/class/getClasses.js")
 const putClass = require("./src/http/class/putClass.js")
 const fetchClass = require("./src/http/class/fetchClass.js")
 
+// rotas responsible 
+const createResponsible = require("./src/http/responsible/createResponsible.js")
+const getResponsibles = require("./src/http/responsible/getResponsibles.js")
+const putResponsible = require("./src/http/responsible/putResponsible.js")
+const fetchResponsible = require("./src/http/responsible/fetchResponsible.js")
+
 app.use(
     express.urlencoded({
       extended: true
@@ -37,6 +43,12 @@ app.use("/class", getClasses)
 app.use("/class", createClass)
 app.use("/class", putClass)
 app.use("/class", fetchClass)
+
+// definição de rotas da entidade responsible
+app.use("/class", getResponsibles)
+app.use("/class", createResponsible)
+app.use("/class", putResponsible)
+app.use("/class", fetchResponsible)
 
 
 dataSource.initialize()

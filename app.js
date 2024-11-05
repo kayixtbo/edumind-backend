@@ -37,6 +37,12 @@ const getStudents = require("./src/http/student/getStudents.js")
 const putStudent = require("./src/http/student/putStudent.js")
 const fetchStudent = require("./src/http/student/fetchStudent.js")
 
+// rotas feedback 
+const createFeedback = require("./src/http/feedback/createFeedback.js")
+const getFeedbacks = require("./src/http/feedback/getFeedbacks.js")
+const putFeedback = require("./src/http/feedback/putFeedback.js")
+const fetchFeedback = require("./src/http/feedback/fetchFeedbak.js")
+
 app.use(
     express.urlencoded({
       extended: true
@@ -73,6 +79,12 @@ app.use("/student", getStudents)
 app.use("/student", createStudent)
 app.use("/student", putStudent)
 app.use("/student", fetchStudent)
+
+// definição de rotas da entidade student
+app.use("/student", getFeedbacks)
+app.use("/student", createFeedback)
+app.use("/student", putFeedback)
+app.use("/student", fetchFeedback)
 
 dataSource.initialize()
     .catch(function (error) {

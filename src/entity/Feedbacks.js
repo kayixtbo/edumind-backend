@@ -1,5 +1,3 @@
-const { JoinColumn } = require("typeorm")
-
 let EntitySchema = require("typeorm").EntitySchema
 
 module.exports = new EntitySchema({

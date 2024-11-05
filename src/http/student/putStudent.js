@@ -4,7 +4,7 @@ const router = express.Router()
 const {putStudent} = require("../../use-cases/student/putStudent")
 
 router.put("/:id",async (req, res)=>{
-    let {id_clas,id_responsible, id_school,registration,occupation,name, birth} = req.body
+    let {id_clas,id_responsible, id_school,registration,name, birth} = req.body
 
     if(birth){
         var birthForm = new Date(birth)
@@ -17,8 +17,7 @@ router.put("/:id",async (req, res)=>{
         id_school: id_school,
         id_clas: id_clas,
         id_responsible: id_responsible,
-        registration: registration,
-        occupation:occupation}, id)
+        registration: registration}, id)
     
     res.send(response)
 })

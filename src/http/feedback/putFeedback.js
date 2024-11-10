@@ -4,15 +4,21 @@ const router = express.Router()
 const {putFeedback} = require("../../use-cases/feedback/putFeedback")
 
 router.put("/:id",async (req, res)=>{
-    let {id_student, id_professional, text} = req.body
 
-    let id = req.params.id
-    let response = await putFeedback(
-        {text: text,
-        id_student: id_student,
-        id_professional: id_professional}, id)
+    try {
+        let {id_student, id_professional, text} = await req.body
     
-    res.send(response)
+        let id = req.params.id
+        let response = await putFeedback(
+            {text: text,
+            id_student: id_student,
+            id_professional: id_professional}, id)
+        
+        res.json(response)
+    
+    } catch (error) {
+        res.json({erro: `${error.message}`})
+    }
 })
 
 module.exports = router

@@ -18,8 +18,9 @@ const createClass = require("./src/http/class/createClass.js")
 const getClasses = require("./src/http/class/getClasses.js")
 const putClass = require("./src/http/class/putClass.js")
 const fetchClass = require("./src/http/class/fetchClass.js")
+const deletClass = require("./src/http/class/deleteClass.js")
 
-// rotas responsible 
+// rotas responsible
 const createResponsible = require("./src/http/responsible/createResponsible.js")
 const getResponsibles = require("./src/http/responsible/getResponsibles.js")
 const putResponsible = require("./src/http/responsible/putResponsible.js")

@@ -4,11 +4,17 @@ const router = express.Router()
 const {getFeedbacks} = require("../../use-cases/feedback/getFeedbacks.js")
 
 router.get("/",async (req, res)=>{
-    let {id_student} = req.query
 
-    let response = await getFeedbacks(id_student)
+    try {
+        let {id_student} = req.query
     
-    res.send(response)
+        let response = await getFeedbacks(id_student)
+        
+        res.json(response)
+    
+    } catch (error) {
+        res.json({erro: `${error.message}`})
+    }
 })
 
 module.exports = router

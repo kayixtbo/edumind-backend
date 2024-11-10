@@ -1,19 +1,24 @@
 let {dataSource} = require("../../dataSource")
 
 async function putClass(data, id) {
-    await dataSource // realizando a query
-        .getRepository('Class')
-        .createQueryBuilder('class')
-        .update()
-        .set(data)
-        .where("id = :id", {id: id})
-        .execute()
+    try {
+        await dataSource // realizando a query
+            .getRepository('Class')
+            .createQueryBuilder('class')
+            .update()
+            .set(data)
+            .where("id = :id", {id: id})
+            .execute()
+            
+        let classRepository = await dataSource
+            .getRepository('Class')
+            .findOne({ where: { id: id } });
+    
+        return classRepository
         
-    let classRepository = await dataSource
-        .getRepository('Class')
-        .findOne({ where: { id: id } });
-
-    return classRepository
+    } catch (error) {
+        throw new Error(`erro: ${error.message}`)
+    }
 }
 
 module.exports = {putClass}

@@ -1,11 +1,16 @@
 let {dataSource} = require("../../dataSource")
 
 async function fetchStudent(id) {
-    let studentRepository = await dataSource // realizando a query
-        .getRepository('Student')
-        .findOne({where: { id: id}})
-    
-    return studentRepository
+
+    try {
+        let studentRepository = await dataSource // realizando a query
+            .getRepository('Students')
+            .findOne({where: { id: id}})
+        
+        return studentRepository
+    } catch (error) {
+        throw new Error(`erro: ${error.message}`)
+    }
 }
 
 module.exports = {fetchStudent}

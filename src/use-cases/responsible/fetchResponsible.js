@@ -1,11 +1,17 @@
 let {dataSource} = require("../../dataSource")
 
 async function fetchResponsible(id) {
-    let responsibleRepository = await dataSource // realizando a query
+
+    try {
+        let responsibleRepository = await dataSource // realizando a query
         .getRepository('Responsible')
         .findOne({where: { id: id}})
-    
-    return responsibleRepository
+        
+        return responsibleRepository
+        
+    } catch (error) {
+        throw new Error(`erro: ${error.message}`)
+    }
 }
 
 module.exports = {fetchResponsible}

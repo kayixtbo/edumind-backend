@@ -1,13 +1,12 @@
 const express = require("express")
 const router = express.Router()
+const {deleteClass} = require("../../use-cases/class/deleteClass")
 
-const {fetchClass} = require("../../use-cases/class/fetchClass")
-
-router.get("/:id",async (req, res)=>{
+router.delete("/:id",async (req, res)=>{
 
     try {
-        let id = req.params.id
-        let response = await fetchClass(id)
+        let id = req.params.id    
+        let response = await deleteClass(id)
         
         res.json(response)
     

@@ -4,10 +4,16 @@ const router = express.Router()
 const {fetchSchool} = require("../../use-cases/school/fetchSchool.js")
 
 router.get("/:id",async (req, res)=>{
-    let id = req.params.id
-    let response = await fetchSchool(id)
+
+    try {
     
-    res.send(response)
+        let id = req.params.id
+        let response = await fetchSchool(id)
+        
+        res.json(response)
+    } catch (error) {
+        res.json({erro: `${error.message}`})
+    }
 })
 
 module.exports = router

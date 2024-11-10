@@ -3,9 +3,15 @@ const router = express.Router()
 
 const {getProfessionals} = require("../../use-cases/professional/getProfessionals")
 router.get("/",async (req, res)=>{
-    let response = await getProfessionals()
+
+    try {
+        let response = await getProfessionals()
+        
+        res.json(response)
     
-    res.send(response)
+    } catch (error) {
+        res.json({erro: `${error.message}`})
+    }
 })
 
 module.exports = router

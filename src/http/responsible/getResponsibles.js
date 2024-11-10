@@ -4,9 +4,15 @@ const router = express.Router()
 const {getResponsibles} = require("../../use-cases/responsible/getResponsibles")
 
 router.get("/",async (req, res)=>{
-    let response = await getResponsibles()
+
+    try {
+        let response = await getResponsibles()
+        
+        res.json(response)
     
-    res.send(response)
+    } catch (error) {
+        res.json({erro: `${error.message}`})
+    }
 })
 
 module.exports = router
